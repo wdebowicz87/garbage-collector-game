@@ -14,6 +14,12 @@ class GCObject extends HTMLElement {
                     border: 5px solid black;
                     background-color: yellow;
                     cursor: pointer;
+                    animation: color 1s 2s;
+                    animation-fill-mode: forwards;
+                }
+                @keyframes color {
+                    0% {background-color: yellow}
+                    100% {background-color: red}
                 }
             </style>
             <div class="gs-object">

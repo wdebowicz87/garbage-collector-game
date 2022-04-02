@@ -33,3 +33,5 @@ Java Full GC means that the full garbage collection event happened. Meaning that
 
 https://web.dev/one-line-layouts/
 https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flexbox-properties
+https://www.w3schools.com/cssref/css3_pr_animation-keyframes.asp
+https://www.w3schools.com/css/css3_animations.asp
