@@ -28,3 +28,8 @@ Minor garbage collection means that the young generation space clearing event wa
 Major garbage collection means that the tenured generation clearing event was performed. The tenured generation is also widely called the old generation space. Depending on the garbage collector and its settings the tenured generation cleaning may happen less or more often. Which is better? The right answer depends on the use case and we will not be covering it in this blog post.
 
 Java Full GC means that the full garbage collection event happened. Meaning that both the young and old generation was cleared. The garbage collector tried to clear it and the log tells us what the outcome of that procedure was. Tenured generation cleaning requires mark, sweep, and compact phases to avoid high memory fragmentation. If a garbage collector wouldn’t care about memory fragmentation you could end up in a situation where you have enough memory, but it is fragmented and the object can’t be allocated. We can illustrate this situation with the following diagram:
+
+# External resources
+
+https://web.dev/one-line-layouts/
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flexbox-properties

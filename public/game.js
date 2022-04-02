@@ -1,6 +1,7 @@
 import {toEncodedJson} from "./utils.js";
 import "./programmer.js";
 import "./new-generation.js";
+import "./gc-object.js";
 
 class Game extends HTMLElement {
 
