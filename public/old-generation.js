@@ -1,6 +1,6 @@
-class NewGeneration extends HTMLElement {
+class OldGeneration extends HTMLElement {
 
-    className = 'new-generation';
+    className = 'old-generation';
     objectsContainer = () => this.shadowRoot.querySelector(`.${this.className}`);
     maxObjects = 6;
 
@@ -18,7 +18,7 @@ class NewGeneration extends HTMLElement {
         this.attachShadow({mode: "open"});
         this.shadowRoot.innerHTML = `
             <style>
-                .new-generation {
+                .old-generation {
                     height: 60px;
                     padding: 2px;
                     width: 400px;
@@ -34,8 +34,7 @@ class NewGeneration extends HTMLElement {
                 <gc-object></gc-object>
             </div>
         `;
-        setInterval(this.createObject, 1000);
     }
 }
 
-window.customElements.define('new-generation', NewGeneration)
+window.customElements.define('old-generation', OldGeneration)

@@ -13,8 +13,8 @@ class GCObject extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <style>
                 .gs-object {
-                    height: 80px;
-                    width: 80px;
+                    height: 50px;
+                    width: 50px;
                     border: 5px solid black;
                     background-color: yellow;
                     position: relative;
@@ -35,7 +35,7 @@ class GCObject extends HTMLElement {
                     animation: move-down 0.5s;
                     animation-fill-mode: forwards;
                     transition: transform 0.5s;
-                    transform: rotate(180deg);
+                    transform: rotate(180deg) scale(0.5);
                 }
                 @keyframes move-down {
                     0% { top: 0px; background-color: orange }
