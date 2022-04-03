@@ -33,7 +33,6 @@ class NewGeneration extends HTMLElement {
                 <gc-object></gc-object>
                 <gc-object></gc-object>
             </div>
-            <h2>New generation</h2>
         `;
         setInterval(this.createObject, 1000);
     }

@@ -2,6 +2,7 @@ import {toEncodedJson} from "./utils.js";
 import "./programmer.js";
 import "./new-generation.js";
 import "./gc-object.js";
+import "./gc-collector.js";
 
 class Game extends HTMLElement {
 
@@ -16,6 +17,7 @@ class Game extends HTMLElement {
             <my-programmer></my-programmer>
             <div class="space"></div>
             <new-generation></new-generation>
+            <gc-collector></gc-collector>
         `;
     }
 }
