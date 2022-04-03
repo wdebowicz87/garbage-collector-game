@@ -1,7 +1,7 @@
 class GCObject extends HTMLElement {
 
     destroy = () => {
-        this.shadowRoot.querySelector(".gs-object").classList.add("anim");
+        this.shadowRoot.querySelector(".gs-object").classList.add("anim-destroy");
         setTimeout(
             () => this.remove(),
             500
@@ -18,18 +18,28 @@ class GCObject extends HTMLElement {
                     width: 80px;
                     border: 5px solid black;
                     background-color: yellow;
+                    position: relative;
                     cursor: pointer;
                 }
-                .anim {
-                    animation: color 1s;
+                .anim-create {
+                    animation: move-from-top 2s;
                     animation-fill-mode: forwards;
                 }
-                @keyframes color {
-                    0% {background-color: yellow}
-                    100% {background-color: red}
+                @keyframes move-from-top {
+                    0% { top: -300px; }
+                    100% { top: 0px;}
+                }
+                .anim-destroy {
+                    animation: move-down 0.5s;
+                    animation-fill-mode: forwards;
+                }
+                @keyframes move-down {
+                    0% { top: 0px; background-color: yellow }
+                    /*10% { top: 20px; background-color: red }*/
+                    100% { top: 110px; background-color: red}
                 }
             </style>
-            <div class="gs-object">
+            <div class="gs-object anim-create">
                 ${Math.floor(Math.random() * 100)}
             </div>
         `;
