@@ -1,7 +1,12 @@
 class GCObject extends HTMLElement {
 
     destroy = () => {
-        this.remove()
+        this.shadowRoot.querySelector(".gs-object").classList.add("anim");
+        setTimeout(
+            () => this.remove(),
+            500
+        )
+
     }
 
     connectedCallback() {
@@ -14,7 +19,9 @@ class GCObject extends HTMLElement {
                     border: 5px solid black;
                     background-color: yellow;
                     cursor: pointer;
-                    animation: color 1s 2s;
+                }
+                .anim {
+                    animation: color 1s;
                     animation-fill-mode: forwards;
                 }
                 @keyframes color {
