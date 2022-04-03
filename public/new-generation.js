@@ -6,11 +6,12 @@ class NewGeneration extends HTMLElement {
 
     amountOfObjects = () => this.objectsContainer().childElementCount;
 
-    createObject = () => {
+    createObject = (id) => {
         if (this.amountOfObjects() >= this.maxObjects) {
             return;
         }
         const gcObject = document.createElement("gc-object")
+        gcObject.setAttribute("data-id", id);
         this.objectsContainer().appendChild(gcObject);
     }
 
@@ -29,13 +30,16 @@ class NewGeneration extends HTMLElement {
                     gap: 4px;
                 }
             </style>
+            <b>Eden Space</b>
             <div class=${this.className}>
-                <gc-object></gc-object>
-                <gc-object></gc-object>
             </div>
         `;
-        setInterval(this.createObject, 1000);
+
+        window.addEventListener("object:new", e => {
+            this.createObject(e.detail.id)
+        })
     }
+
 }
 
 window.customElements.define('new-generation', NewGeneration)

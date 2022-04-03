@@ -29,11 +29,14 @@ class OldGeneration extends HTMLElement {
                     gap: 4px;
                 }
             </style>
+            <b>Old Generation</b>
             <div class=${this.className}>
-                <gc-object></gc-object>
-                <gc-object></gc-object>
             </div>
         `;
+
+        window.addEventListener("object:promoteNewGen", e => {
+            this.createObject(e.id)
+        })
     }
 }
 

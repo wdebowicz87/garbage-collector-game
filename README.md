@@ -38,4 +38,4 @@ https://www.w3schools.com/css/css3_animations.asp
 https://javascript.info/js-animation
 https://www.codegrepper.com/code-examples/javascript/javascript+run+a+function+every+x+seconds
 https://levelup.gitconnected.com/use-javascript-to-make-an-element-follow-the-cursor-3872307778b4
-
+https://stackoverflow.com/questions/43061417/how-to-listen-for-custom-events-defined-web-component

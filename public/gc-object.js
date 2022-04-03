@@ -43,7 +43,7 @@ class GCObject extends HTMLElement {
                 }
             </style>
             <div class="gs-object anim-create">
-                ${Math.floor(Math.random() * 100)}
+                ${this.dataset.id}
             </div>
         `;
 
