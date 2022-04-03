@@ -6,7 +6,6 @@ class GCObject extends HTMLElement {
             () => this.remove(),
             500
         )
-
     }
 
     connectedCallback() {
@@ -35,10 +34,11 @@ class GCObject extends HTMLElement {
                 .anim-destroy {
                     animation: move-down 0.5s;
                     animation-fill-mode: forwards;
+                    transition: transform 0.5s;
+                    transform: rotate(180deg);
                 }
                 @keyframes move-down {
                     0% { top: 0px; background-color: orange }
-                    /*10% { top: 20px; background-color: red }*/
                     100% { top: 110px; background-color: red}
                 }
             </style>
