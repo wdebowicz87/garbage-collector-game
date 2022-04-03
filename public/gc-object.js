@@ -21,6 +21,9 @@ class GCObject extends HTMLElement {
                     position: relative;
                     cursor: pointer;
                 }
+                .gs-object:hover {
+                    background-color: orange;
+                }
                 .anim-create {
                     animation: move-from-top 2s;
                     animation-fill-mode: forwards;
@@ -34,7 +37,7 @@ class GCObject extends HTMLElement {
                     animation-fill-mode: forwards;
                 }
                 @keyframes move-down {
-                    0% { top: 0px; background-color: yellow }
+                    0% { top: 0px; background-color: orange }
                     /*10% { top: 20px; background-color: red }*/
                     100% { top: 110px; background-color: red}
                 }

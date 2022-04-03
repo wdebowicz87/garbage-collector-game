@@ -37,3 +37,5 @@ https://www.w3schools.com/cssref/css3_pr_animation-keyframes.asp
 https://www.w3schools.com/css/css3_animations.asp
 https://javascript.info/js-animation
 https://www.codegrepper.com/code-examples/javascript/javascript+run+a+function+every+x+seconds
+https://levelup.gitconnected.com/use-javascript-to-make-an-element-follow-the-cursor-3872307778b4
+
