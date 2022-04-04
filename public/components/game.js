@@ -27,7 +27,7 @@ class Game extends HTMLElement {
             if (counter == maxCount) {
                 clearInterval(interval)
             }
-        }, 80);
+        }, 500);
     }
 
     run = () => {
@@ -37,6 +37,7 @@ class Game extends HTMLElement {
     finishCycle = () => {
         console.log("event finished cycle");
         window.dispatchEvent(new CustomEvent("cycle:finished"));
+        setTimeout(this.start, 2500);
     }
 
     connectedCallback() {
@@ -44,9 +45,6 @@ class Game extends HTMLElement {
         window.run = this.run;
         this.innerHTML = `
             <style>
-                .space {
-                    height: 50px;
-                }
                 .memory {
                     height: 100px;
                     padding: 10px;
@@ -58,11 +56,13 @@ class Game extends HTMLElement {
                     gap: 20px;
                 }
             </style>
+            <button onclick="window.finishCycle()">finish cycle</button>
+            <button onclick="window.run()">run-gc</button>
             <h1>Garbage Collector</h1>
             <stack-memory></stack-memory> 
-            <button onclick="window.finishCycle()">finish cycle</button>
-            <button onclick="window.run()">run</button>
-            <div class="space"></div>
+            <div class="space">
+                <img src="../images/code.png"></img>
+            </div>
             <heap-memory></heap-memory>
             <gc-collector></gc-collector>
         `;
