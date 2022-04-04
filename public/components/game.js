@@ -1,10 +1,8 @@
-import {toEncodedJson} from "./utils.js";
-import "./programmer.js";
-import "./eden-space.js";
-import "./tenured-space.js";
-import "./survivor-space.js";
+import {toEncodedJson} from "../utils.js";
+import "../programmer.js";
 import "./gc-object.js";
 import "./gc-collector.js";
+import "./memory/heap-memory.js";
 
 class Game extends HTMLElement {
 
@@ -48,12 +46,7 @@ class Game extends HTMLElement {
             <my-programmer></my-programmer> 
             <button onclick="window.finishCycle()">finish cycle</button>
             <div class="space"></div>
-            <b>Heap Memory</b>
-            <div class="memory">
-                <eden-space></eden-space>
-                <survivor-space></survivor-space>
-                <tenured-space></tenured-space>
-            </div>
+            <heap-memory></heap-memory>
             <gc-collector></gc-collector>
         `;
 

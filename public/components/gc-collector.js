@@ -38,8 +38,8 @@ class GcCollector extends HTMLElement {
             </style>
             <div class="objects-collector">
                 <div class="bin">
-                    <img class="bin-top" src="images/bin_top.svg"></img>
-                    <img class="bin-bottom" src="images/bin.svg"></img>          
+                    <img class="bin-top" src="../images/bin_top.svg"></img>
+                    <img class="bin-bottom" src="../images/bin.svg"></img>          
                 </div>
             </div>
         `;
