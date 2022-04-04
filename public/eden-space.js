@@ -1,6 +1,6 @@
-class NewGeneration extends HTMLElement {
+class EdenSpace extends HTMLElement {
 
-    className = 'new-generation';
+    className = 'eden-space';
     objectsContainer = () => this.querySelector(`.${this.className}`);
     maxObjects = 6;
 
@@ -18,7 +18,7 @@ class NewGeneration extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <style>
-                .new-generation {
+                .eden-space {
                     height: 60px;
                     padding: 2px;
                     width: 400px;
@@ -41,4 +41,4 @@ class NewGeneration extends HTMLElement {
 
 }
 
-window.customElements.define('new-generation', NewGeneration)
+window.customElements.define('eden-space', EdenSpace)

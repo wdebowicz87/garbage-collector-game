@@ -1,6 +1,13 @@
 const eden = Symbol("eden");
-const oldGen = Symbol("oldGen");
+const survivor = Symbol("survivor");
+const tenured = Symbol("tenured");
 const garbage = Symbol("garbage");
+
+const stateToParentSelector = {
+    [eden]: ".eden-space",
+    [survivor]: ".survivor-space",
+    [tenured]: ".tenured-space"
+}
 
 class GCObject extends HTMLElement {
 
@@ -64,16 +71,24 @@ class GCObject extends HTMLElement {
 
         this.addEventListener('click', this.destroy);
 
+        const promoteTo = (newState) => {
+            const newParent = stateToParentSelector[newState];
+            console.log(`promote to ${newParent} ${this.id()}`);
+            this.getElement().classList.add('anim-promote');
+            this.state = newState;
+            setTimeout(() => document.querySelector(newParent).append(this), 1000);
+        }
+
         window.addEventListener("cycle:finished", e => {
-            switch (this.state) {
+            const state = this.state;
+            switch (state) {
                 case garbage:
-                    console.log("garbage: " + this.id());
                     break;
                 case eden:
-                    console.log("promote to oldGen" + this.id());
-                    this.getElement().classList.add('anim-promote');
-                    setTimeout(() => document.querySelector('.old-generation').append(this), 1000);
-                    this.state = oldGen;
+                    promoteTo(survivor);
+                    break;
+                case survivor:
+                    promoteTo(tenured);
                     break;
 
             }

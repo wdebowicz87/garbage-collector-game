@@ -1,7 +1,8 @@
 import {toEncodedJson} from "./utils.js";
 import "./programmer.js";
-import "./new-generation.js";
-import "./old-generation.js";
+import "./eden-space.js";
+import "./tenured-space.js";
+import "./survivor-space.js";
 import "./gc-object.js";
 import "./gc-collector.js";
 
@@ -15,12 +16,13 @@ class Game extends HTMLElement {
     }
 
     start = () => {
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 5; i++) {
             setTimeout(this.createObject, 100);
         }
     }
 
     finishCycle = () => {
+        console.log("event finished cycle");
         window.dispatchEvent(new CustomEvent("cycle:finished"));
     }
 
@@ -43,13 +45,14 @@ class Game extends HTMLElement {
                 }
             </style>
             <h1>Garbage Collector</h1>
-            <my-programmer></my-programmer>
+            <my-programmer></my-programmer> 
             <button onclick="window.finishCycle()">finish cycle</button>
             <div class="space"></div>
-            <b>Memory</b>
+            <b>Heap Memory</b>
             <div class="memory">
-                <new-generation></new-generation>
-                <old-generation></old-generation>
+                <eden-space></eden-space>
+                <survivor-space></survivor-space>
+                <tenured-space></tenured-space>
             </div>
             <gc-collector></gc-collector>
         `;

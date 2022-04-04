@@ -1,14 +1,14 @@
-class OldGeneration extends HTMLElement {
+class SurvivorSpace extends HTMLElement {
 
-    className = 'old-generation';
+    className = 'survivor-space';
 
     connectedCallback() {
         this.innerHTML = `
             <style>
-                .old-generation {
+                .survivor-space {
                     height: 60px;
                     padding: 2px;
-                    width: 400px;
+                    width: 200px;
                     border: 5px solid green;
                     display: flex;
                     flex-direction: row;
@@ -16,11 +16,11 @@ class OldGeneration extends HTMLElement {
                     gap: 4px;
                 }
             </style>
-            <b>Old Generation</b>
-            <div class=${this.className}>
+                <b>Survivor Space</b>
+                <div class=${this.className}>
             </div>
         `;
     }
 }
 
-window.customElements.define('old-generation', OldGeneration)
+window.customElements.define('survivor-space', SurvivorSpace)
