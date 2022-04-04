@@ -6,7 +6,7 @@ class GcCollector extends HTMLElement {
             <style>
                 .objects-collector {
                     border: 1px solid blue;
-                    margin-top: 50px;
+                    margin-top: 10px;
                 }
                 img {
                     max-width: 100%;

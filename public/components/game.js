@@ -3,6 +3,9 @@ import "../programmer.js";
 import "./gc-object.js";
 import "./gc-collector.js";
 import "./memory/heap-memory.js";
+import "./memory/eden-space.js";
+import "./memory/tenured-space.js";
+import "./memory/survivor-space.js";
 
 class Game extends HTMLElement {
 
@@ -29,7 +32,7 @@ class Game extends HTMLElement {
         this.innerHTML = `
             <style>
                 .space {
-                    height: 200px;
+                    height: 50px;
                 }
                 .memory {
                     height: 100px;

@@ -29,10 +29,11 @@ class GCObject extends HTMLElement {
                 .gs-object {
                     height: 50px;
                     width: 50px;
-                    border: 5px solid black;
+                    border: 3px solid black;
                     background-color: yellow;
                     position: relative;
                     cursor: pointer;
+                    text-align: center;
                 }
                 .gs-object:hover {
                     background-color: orange;
@@ -65,7 +66,7 @@ class GCObject extends HTMLElement {
                 }
             </style>
             <div class="gs-object">
-                ${this.id()}
+                <p>obj-${this.id()}</p>
             </div>
         `;
 

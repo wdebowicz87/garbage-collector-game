@@ -22,11 +22,12 @@ class EdenSpace extends HTMLElement {
                     height: 60px;
                     padding: 2px;
                     width: 400px;
-                    border: 5px solid green;
+                    border: 3px solid green;
                     display: flex;
                     flex-direction: row;
                     align-items: center;
                     gap: 4px;
+                    background-color: lightblue;
                 }
             </style>
             <b>Eden Space</b>
