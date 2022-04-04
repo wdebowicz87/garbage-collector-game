@@ -4,11 +4,28 @@ import "./new-generation.js";
 import "./old-generation.js";
 import "./gc-object.js";
 import "./gc-collector.js";
-import { start } from "./gc-gameplay.js";
 
 class Game extends HTMLElement {
 
+    objectCounter = 0;
+
+    createObject = ()=> {
+        this.objectCounter++;
+        window.dispatchEvent(new CustomEvent("object:new", { detail: { id: this.objectCounter} }));
+    }
+
+    start = () => {
+        for (let i = 0; i < 6; i++) {
+            setTimeout(this.createObject, 100);
+        }
+    }
+
+    finishCycle = () => {
+        window.dispatchEvent(new CustomEvent("cycle:finished"));
+    }
+
     connectedCallback() {
+        window.finishCycle = this.finishCycle;
         this.innerHTML = `
             <style>
                 .space {
@@ -27,6 +44,7 @@ class Game extends HTMLElement {
             </style>
             <h1>Garbage Collector</h1>
             <my-programmer></my-programmer>
+            <button onclick="window.finishCycle()">finish cycle</button>
             <div class="space"></div>
             <b>Memory</b>
             <div class="memory">
@@ -36,7 +54,7 @@ class Game extends HTMLElement {
             <gc-collector></gc-collector>
         `;
 
-        start();
+        this.start();
     }
 }
 

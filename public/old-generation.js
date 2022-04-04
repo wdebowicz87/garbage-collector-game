@@ -1,22 +1,9 @@
 class OldGeneration extends HTMLElement {
 
     className = 'old-generation';
-    objectsContainer = () => this.shadowRoot.querySelector(`.${this.className}`);
-    maxObjects = 6;
-
-    amountOfObjects = () => this.objectsContainer().childElementCount;
-
-    createObject = () => {
-        if (this.amountOfObjects() >= this.maxObjects) {
-            return;
-        }
-        const gcObject = document.createElement("gc-object")
-        this.objectsContainer().appendChild(gcObject);
-    }
 
     connectedCallback() {
-        this.attachShadow({mode: "open"});
-        this.shadowRoot.innerHTML = `
+        this.innerHTML = `
             <style>
                 .old-generation {
                     height: 60px;
@@ -33,10 +20,6 @@ class OldGeneration extends HTMLElement {
             <div class=${this.className}>
             </div>
         `;
-
-        window.addEventListener("object:promoteNewGen", e => {
-            this.createObject(e.id)
-        })
     }
 }
 

@@ -1,7 +1,15 @@
+const eden = Symbol("eden");
+const oldGen = Symbol("oldGen");
+const garbage = Symbol("garbage");
+
 class GCObject extends HTMLElement {
 
+    state = eden;
+    id =() => this.dataset.id
+    getElement = () => this.querySelector(".gs-object")
     destroy = () => {
-        this.shadowRoot.querySelector(".gs-object").classList.add("anim-destroy");
+        this.getElement().classList.add("anim-destroy");
+        this.state = garbage;
         setTimeout(
             () => this.remove(),
             500
@@ -9,8 +17,7 @@ class GCObject extends HTMLElement {
     }
 
     connectedCallback() {
-        this.attachShadow({mode: "open"})
-        this.shadowRoot.innerHTML = `
+        this.innerHTML = `
             <style>
                 .gs-object {
                     height: 50px;
@@ -41,13 +48,36 @@ class GCObject extends HTMLElement {
                     0% { top: 0px; background-color: orange }
                     100% { top: 110px; background-color: red}
                 }
+                .anim-promote {
+                    animation: move-right 1s;
+                    animation-fill-mode: forwards;
+                }
+                @keyframes  move-right {
+                    0% { left: 0px; }
+                    100% { left: 300px;}
+                }
             </style>
-            <div class="gs-object anim-create">
-                ${this.dataset.id}
+            <div class="gs-object">
+                ${this.id()}
             </div>
         `;
 
         this.addEventListener('click', this.destroy);
+
+        window.addEventListener("cycle:finished", e => {
+            switch (this.state) {
+                case garbage:
+                    console.log("garbage: " + this.id());
+                    break;
+                case eden:
+                    console.log("promote to oldGen" + this.id());
+                    this.getElement().classList.add('anim-promote');
+                    setTimeout(() => document.querySelector('.old-generation').append(this), 1000);
+                    this.state = oldGen;
+                    break;
+
+            }
+        })
     }
 }
 

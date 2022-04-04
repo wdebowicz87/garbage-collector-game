@@ -1,7 +1,7 @@
 class NewGeneration extends HTMLElement {
 
     className = 'new-generation';
-    objectsContainer = () => this.shadowRoot.querySelector(`.${this.className}`);
+    objectsContainer = () => this.querySelector(`.${this.className}`);
     maxObjects = 6;
 
     amountOfObjects = () => this.objectsContainer().childElementCount;
@@ -16,8 +16,7 @@ class NewGeneration extends HTMLElement {
     }
 
     connectedCallback() {
-        this.attachShadow({mode: "open"});
-        this.shadowRoot.innerHTML = `
+        this.innerHTML = `
             <style>
                 .new-generation {
                     height: 60px;
