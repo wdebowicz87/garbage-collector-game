@@ -1,11 +1,13 @@
 import {toEncodedJson} from "../utils.js";
 import "../programmer.js";
 import "./gc-object.js";
+import "./object-reference.js";
 import "./gc-collector.js";
 import "./memory/heap-memory.js";
 import "./memory/eden-space.js";
 import "./memory/tenured-space.js";
 import "./memory/survivor-space.js";
+import "./memory/stack-memory.js";
 
 class Game extends HTMLElement {
 
@@ -17,9 +19,19 @@ class Game extends HTMLElement {
     }
 
     start = () => {
-        for (let i = 0; i < 5; i++) {
-            setTimeout(this.createObject, 100);
-        }
+        let counter = 0;
+        let maxCount = 6;
+        const interval = setInterval(() => {
+            this.createObject();
+            counter++;
+            if (counter == maxCount) {
+                clearInterval(interval)
+            }
+        }, 80);
+    }
+
+    run = () => {
+        this.start();
     }
 
     finishCycle = () => {
@@ -29,6 +41,7 @@ class Game extends HTMLElement {
 
     connectedCallback() {
         window.finishCycle = this.finishCycle;
+        window.run = this.run;
         this.innerHTML = `
             <style>
                 .space {
@@ -46,8 +59,9 @@ class Game extends HTMLElement {
                 }
             </style>
             <h1>Garbage Collector</h1>
-            <my-programmer></my-programmer> 
+            <stack-memory></stack-memory> 
             <button onclick="window.finishCycle()">finish cycle</button>
+            <button onclick="window.run()">run</button>
             <div class="space"></div>
             <heap-memory></heap-memory>
             <gc-collector></gc-collector>
