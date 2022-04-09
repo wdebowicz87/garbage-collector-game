@@ -13,13 +13,13 @@ class StackMemory extends HTMLElement {
         this.innerHTML = `
             <style>
                 .stack-memory {
-                    height: 120px;
-                    padding: 2px;
-                    width: 440px;
+                    height: 60px;
+                    padding: 4px;
+                    width: 900px;
                     border: 1px solid green;
                     display: grid;
-                    grid-template-columns: 100px 100px 100px;
-                    grid-template-rows: 20px 20px 20px 20px 20px;
+                    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 100px;
+                    grid-template-rows: 20px 20px 20px;
                     grid-auto-flow: column;
                     background-color: lightgreen;
                 }

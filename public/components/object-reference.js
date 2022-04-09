@@ -16,7 +16,7 @@ class ObjectReference extends HTMLElement {
                 }
             </style>
             <div class="object-reference">
-                <p class="object-reference">*obj-${this.id()}(ref)</p>
+                *obj-${this.id()}(ref)
             </div>
         `;
     }

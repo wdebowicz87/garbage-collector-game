@@ -4,14 +4,14 @@ class HeapMemory extends HTMLElement {
         this.innerHTML = `
             <style>
                 .heap-memory {
-                    height: 160px;
-                    padding: 20px;
-                    width: 1400px;
+                    height: 340px;
+                    padding: 10px;
+                    width: 900px;
                     border: 1px solid green;
                     display: flex;
-                    flex-direction: row;
+                    flex-direction: column;
                     align-items: center;
-                    gap: 60px;
+                    gap: 20px;
                 }
                 .new-generation-flex {
                     height: 110px;

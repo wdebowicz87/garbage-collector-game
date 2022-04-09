@@ -45,27 +45,15 @@ class Game extends HTMLElement {
         window.finishCycle = this.finishCycle;
         window.runGC = this.runGC;
         this.innerHTML = `
-            <style>
-                .memory {
-                    height: 100px;
-                    padding: 10px;
-                    width: 1400px;
-                    border: 1px solid green;
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    gap: 20px;
-                }
-            </style>
-            <button onclick="window.finishCycle()">finish cycle</button>
-            <button onclick="window.runGC()">run gc</button>
-            <h1>Garbage Collector</h1>
+<!--            <p>Garbage Collector</p>-->
             <stack-memory></stack-memory> 
             <div class="space">
-                <img src="../images/code.png"></img>
+                <img src="../images/code-small.png"></img>
             </div>
             <heap-memory></heap-memory>
             <gc-collector></gc-collector>
+                        <button onclick="window.finishCycle()">finish cycle</button>
+            <button onclick="window.runGC()">run gc</button>
         `;
 
         this.start();
