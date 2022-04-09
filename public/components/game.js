@@ -3,6 +3,7 @@ import "../programmer.js";
 import "./gc-object.js";
 import "./object-reference.js";
 import "./gc-collector.js";
+import "./code-sample.js";
 import "./memory/heap-memory.js";
 import "./memory/eden-space.js";
 import "./memory/tenured-space.js";
@@ -14,6 +15,7 @@ class Game extends HTMLElement {
     objectCounter = 0;
 
     createObject = ()=> {
+        this.querySelector("code-sample").execute();
         this.objectCounter++;
         window.dispatchEvent(new CustomEvent("object:new", { detail: { id: this.objectCounter} }));
     }
@@ -27,7 +29,7 @@ class Game extends HTMLElement {
             if (counter == maxCount) {
                 clearInterval(interval)
             }
-        }, 500);
+        }, 1000);
     }
 
     runGC = () => {
@@ -48,6 +50,7 @@ class Game extends HTMLElement {
 <!--            <p>Garbage Collector</p>-->
             <stack-memory></stack-memory> 
             <div class="space">
+                <code-sample></code-sample>
                 <img src="../images/code-small.png"></img>
             </div>
             <heap-memory></heap-memory>
