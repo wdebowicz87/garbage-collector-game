@@ -30,7 +30,8 @@ class Game extends HTMLElement {
         }, 500);
     }
 
-    run = () => {
+    runGC = () => {
+        window.dispatchEvent(new CustomEvent("cycle:start"));
         this.start();
     }
 
@@ -42,7 +43,7 @@ class Game extends HTMLElement {
 
     connectedCallback() {
         window.finishCycle = this.finishCycle;
-        window.run = this.run;
+        window.runGC = this.runGC;
         this.innerHTML = `
             <style>
                 .memory {
@@ -57,7 +58,7 @@ class Game extends HTMLElement {
                 }
             </style>
             <button onclick="window.finishCycle()">finish cycle</button>
-            <button onclick="window.run()">run-gc</button>
+            <button onclick="window.runGC()">run gc</button>
             <h1>Garbage Collector</h1>
             <stack-memory></stack-memory> 
             <div class="space">

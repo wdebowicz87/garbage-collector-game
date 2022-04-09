@@ -16,8 +16,10 @@ class GcCollector extends HTMLElement {
                     height: 200px;
                     width: 100px;
                     position: relative;
-                    left: -150px;
-                    animation: move 20s 1s infinite;
+                    left: -120px;
+                }
+                .bin-move {
+                    animation: move 15s infinite;
                     animation-fill-mode: forwards;
                     rotate: -10deg;
                 }
@@ -32,7 +34,7 @@ class GcCollector extends HTMLElement {
                 }
                 
                 @keyframes move {
-                    0% {left: -150px; }
+                    0% {left: -120px; }
                     100% {left: 800px; }
                 }
             </style>
@@ -43,6 +45,13 @@ class GcCollector extends HTMLElement {
                 </div>
             </div>
         `;
+
+        window.addEventListener("cycle:start", e => {
+            this.shadowRoot.querySelector('.bin').classList.add('bin-move');
+        })
+        window.addEventListener("cycle:finished", e => {
+            this.shadowRoot.querySelector('.bin').classList.remove('bin-move');
+        })
     }
 }
 
