@@ -4,6 +4,7 @@ import "./gc-object.js";
 import "./object-reference.js";
 import "./gc-collector.js";
 import "./code-sample.js";
+import "./code-executor.js";
 import "./minor-gc.js";
 import "./major-gc.js";
 import "./memory/heap-memory.js";
@@ -22,32 +23,7 @@ class Game extends HTMLElement {
         window.dispatchEvent(new CustomEvent("object:new", { detail: { id: this.objectCounter} }));
     }
 
-    start = () => {
-        this.querySelector('.start').disabled = true;
-        let counter = 0;
-        let maxCount = 6;
-        const interval = setInterval(() => {
-            this.createObject();
-            counter++;
-            if (counter == maxCount) {
-                clearInterval(interval)
-            }
-        }, 1000);
-    }
-
-    runCode = () => {
-        this.interval = setInterval(() => {
-            this.createObject();
-        }, 1000);
-    }
-
-    pauseCode = () => {
-        clearInterval(this.interval)
-    }
-
-
     connectedCallback() {
-        window.start = this.start;
         this.innerHTML = `
         <style>
             .memory {
@@ -64,18 +40,13 @@ class Game extends HTMLElement {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                gap: 10px;
-            }
-            .start {
-                margin-top: 18px;
-                width: 70px;
-                height: 60px;
+                gap: 20px;
             }
         </style>
 <!--            <p>Garbage Collector</p>-->
         <div class="code">
             <code-sample></code-sample>
-            <button class="start" onclick="window.start()"><b>Start</b></button>
+            <code-executor></code-executor>
         </div>
         <div class="memory">
             <stack-memory></stack-memory> 
@@ -85,20 +56,6 @@ class Game extends HTMLElement {
             </div>
         </div>
         `;
-
-        window.addEventListener("minor-gc:start", e => {
-            this.pauseCode();
-        })
-        window.addEventListener("major-gc:start", e => {
-            this.pauseCode();
-        })
-
-        window.addEventListener("minor-gc:stop", e => {
-            this.runCode();
-        })
-        window.addEventListener("major-gc:stop", e => {
-            this.runCode();
-        })
     }
 }
 

@@ -37,6 +37,10 @@ class CodeSample extends HTMLElement {
                 <span>3 </span>
             </div>
         `;
+
+        window.addEventListener("object:new", e => {
+            this.execute();
+        })
     }
 
     execute = () => {
