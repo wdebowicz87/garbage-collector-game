@@ -47,22 +47,30 @@ class GCObject extends HTMLElement {
                     100% { top: 0px;}
                 }
                 .anim-destroy {
-                    animation: move-down 0.5s;
+                    animation: fall-down 0.5s;
                     animation-fill-mode: forwards;
                     transition: transform 0.5s;
                     transform: rotate(180deg) scale(0.5);
                 }
-                @keyframes move-down {
+                @keyframes fall-down {
                     0% { top: 0px; background-color: orange }
                     100% { top: 110px; background-color: red}
                 }
-                .anim-promote {
+                .anim-promote-right {
                     animation: move-right 1s;
+                    animation-fill-mode: forwards;
+                }
+                .anim-promote-down {
+                    animation: move-down 1s;
                     animation-fill-mode: forwards;
                 }
                 @keyframes  move-right {
                     0% { left: 0px; }
                     100% { left: 300px;}
+                }
+                @keyframes  move-down {
+                    0% { top: 0px; left: 0px;}
+                    100% { top: 170px; left: -100px}
                 }
             </style>
             <div class="gs-object">
@@ -72,10 +80,10 @@ class GCObject extends HTMLElement {
 
         this.addEventListener('click', this.destroy);
 
-        const promoteTo = (newState) => {
+        const promoteTo = (newState, newClass) => {
             const newParent = stateToParentSelector[newState];
             console.log(`promote to ${newParent} ${this.id()}`);
-            this.getElement().classList.add('anim-promote');
+            this.getElement().classList.add(newClass);
             this.state = newState;
             setTimeout(() => document.querySelector(newParent).append(this), 1000);
         }
@@ -86,10 +94,10 @@ class GCObject extends HTMLElement {
                 case garbage:
                     break;
                 case eden:
-                    promoteTo(survivor);
+                    promoteTo(survivor, 'anim-promote-right');
                     break;
                 case survivor:
-                    promoteTo(tenured);
+                    promoteTo(tenured, 'anim-promote-down');
                     break;
 
             }

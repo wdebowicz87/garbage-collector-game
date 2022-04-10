@@ -5,7 +5,7 @@ class GcCollector extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <style>
                 .objects-collector {
-                    border: 1px solid blue;
+                    /*border: 1px solid blue;*/
                     margin-top: 10px;
                 }
                 img {
@@ -16,7 +16,6 @@ class GcCollector extends HTMLElement {
                     height: 200px;
                     width: 100px;
                     position: relative;
-                    left: -120px;
                 }
                 .bin-move {
                     animation: move 15s infinite;
@@ -34,7 +33,7 @@ class GcCollector extends HTMLElement {
                 }
                 
                 @keyframes move {
-                    0% {left: -120px; }
+                    0% {left: 0px; }
                     100% {left: 800px; }
                 }
             </style>
