@@ -8,7 +8,7 @@ class EdenSpace extends HTMLElement {
 
     createObject = (id) => {
         if (this.amountOfObjects() >= this.maxObjects) {
-            return;
+            //window.alert("Exception in thread main java.lang.OutOfMemoryError: Java heap space");
         }
         const gcObject = document.createElement("gc-object")
         gcObject.setAttribute("data-id", id);

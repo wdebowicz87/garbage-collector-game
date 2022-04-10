@@ -88,7 +88,7 @@ class GCObject extends HTMLElement {
             setTimeout(() => document.querySelector(newParent).append(this), 1000);
         }
 
-        window.addEventListener("cycle:finished", e => {
+        window.addEventListener("minor-gc:stop", e => {
             const state = this.state;
             switch (state) {
                 case garbage:

@@ -8,7 +8,7 @@ class TenuredSpace extends HTMLElement {
                 .tenured-space {
                     height: 60px;
                     padding: 2px;
-                    width: 880px;
+                    width: 780px;
                     border: 3px solid green;
                     display: flex;
                     flex-direction: row;

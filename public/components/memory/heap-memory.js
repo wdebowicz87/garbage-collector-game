@@ -40,13 +40,15 @@ class HeapMemory extends HTMLElement {
                     <b>New Generation</b>
                     <div class="new-generation-flex">
                         <eden-space></eden-space>
-                        <survivor-space></survivor-space>         
+                        <survivor-space></survivor-space>     
+                        <minor-gc></minor-gc>
                     </div>
                 </div>
                 <div>
                     <b>Old Generation</b>
                     <div class="old-generation-flex">
-                        <tenured-space></tenured-space>            
+                        <tenured-space></tenured-space>      
+                        <major-gc></major-gc>
                     </div>
                 </div>
             </div>

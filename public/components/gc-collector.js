@@ -15,26 +15,24 @@ class GcCollector extends HTMLElement {
                 .bin {
                     height: 200px;
                     width: 100px;
-                    position: relative;
+                    position: absolute;
                 }
-                .bin-move {
-                    animation: move 15s infinite;
-                    animation-fill-mode: forwards;
-                    rotate: -10deg;
+                .bin-appear {
+                    transition: transform 0.5s;
+                    transform: rotate(360deg) scale(1);
+                }
+                .bin-disappear {
+                    transition: transform 0.5s;
+                    transform: rotate(0deg) scale(0);
                 }
                 .bin-top {
                       transform-origin: bottom left;
                       transform-style: preserve-3D;
-                      animation: rotate 1s infinite alternate;
+                      animation: top-rotate 1s infinite alternate;
                 }
-                @keyframes rotate {
+                @keyframes top-rotate {
                     0% {transform: rotate(0deg); }
                     100% {transform: rotate(-100deg) }
-                }
-                
-                @keyframes move {
-                    0% {left: 0px; }
-                    100% {left: 800px; }
                 }
             </style>
             <div class="objects-collector">
@@ -45,12 +43,36 @@ class GcCollector extends HTMLElement {
             </div>
         `;
 
-        window.addEventListener("cycle:start", e => {
-            this.shadowRoot.querySelector('.bin').classList.add('bin-move');
+        const startGC = () => {
+            this.shadowRoot.querySelector('.bin').classList.add('bin-appear');
+            this.shadowRoot.querySelector('.bin').classList.remove('bin-disappear');
+            document.addEventListener('mousemove', updatePosition);
+        }
+
+        const stopGC = () => {
+            this.shadowRoot.querySelector('.bin').classList.remove('bin-appear');
+            this.shadowRoot.querySelector('.bin').classList.add('bin-disappear');
+            document.removeEventListener('mousemove', updatePosition);
+        }
+
+        window.addEventListener("minor-gc:start", e => {
+            startGC();
         })
-        window.addEventListener("cycle:finished", e => {
-            this.shadowRoot.querySelector('.bin').classList.remove('bin-move');
+        window.addEventListener("minor-gc:stop", e => {
+            stopGC()
         })
+        window.addEventListener("major-gc:start", e => {
+            startGC();
+        })
+        window.addEventListener("major-gc:stop", e => {
+            stopGC();
+        })
+
+        const updatePosition = (e) =>{
+            const collector = this.shadowRoot.querySelector('.bin');
+            collector.style.left = e.pageX - 50 + 'px';
+            collector.style.top = e.pageY + 80 + 'px';
+        }
     }
 }
 
