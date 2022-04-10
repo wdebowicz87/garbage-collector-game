@@ -13,7 +13,7 @@ class GCObject extends HTMLElement {
 
     state = eden;
     id =() => this.dataset.id
-    getElement = () => this.querySelector(".gs-object")
+    getElement = () => this.querySelector(".gc-object")
     destroy = () => {
         this.getElement().classList.add("anim-destroy");
         this.state = garbage;
@@ -26,7 +26,7 @@ class GCObject extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <style>
-                .gs-object {
+                .gc-object {
                     height: 50px;
                     width: 50px;
                     border: 3px solid black;
@@ -35,7 +35,7 @@ class GCObject extends HTMLElement {
                     cursor: pointer;
                     text-align: center;
                 }
-                .gs-object:hover {
+                .gc-object:hover {
                     background-color: orange;
                 }
                 .anim-create {
@@ -73,7 +73,7 @@ class GCObject extends HTMLElement {
                     100% { top: 170px; left: -100px}
                 }
             </style>
-            <div class="gs-object">
+            <div class="gc-object">
                 <p>obj-${this.id()}</p>
             </div>
         `;
