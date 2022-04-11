@@ -3,16 +3,16 @@ const survivor = Symbol("survivor");
 const tenured = Symbol("tenured");
 const garbage = Symbol("garbage");
 
-const stateToParentSelector = {
-    [eden]: ".eden-space",
-    [survivor]: ".survivor-space",
-    [tenured]: ".tenured-space"
+const stateToSpace = {
+    [eden]: "eden-space",
+    [survivor]: "survivor-space",
+    [tenured]: "tenured-space"
 }
 
 class GCObject extends HTMLElement {
 
     state = eden;
-    id =() => this.dataset.id
+    numericId =() => this.dataset.id
     getElement = () => this.querySelector(".gc-object")
     destroy = () => {
         this.getElement().classList.add("anim-destroy");
@@ -74,18 +74,17 @@ class GCObject extends HTMLElement {
                 }
             </style>
             <div class="gc-object">
-                <p>obj-${this.id()}</p>
+                <p>obj-${this.numericId()}</p>
             </div>
         `;
 
         this.addEventListener('click', this.destroy);
 
         const promoteTo = (newState, newClass) => {
-            const newParent = stateToParentSelector[newState];
-            console.log(`promote to ${newParent} ${this.id()}`);
+            const newParent = stateToSpace[newState];
             this.getElement().classList.add(newClass);
             this.state = newState;
-            setTimeout(() => document.querySelector(newParent).append(this), 1000);
+            setTimeout(() => window.dispatchEvent(new CustomEvent(`${newParent}:add`, { detail: { id: this.id } })), 1000);
         }
 
         window.addEventListener("minor-gc:stop", e => {

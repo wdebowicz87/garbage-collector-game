@@ -1,6 +1,7 @@
 class SurvivorSpace extends HTMLElement {
 
     className = 'survivor-space';
+    objectsContainer = () => this.querySelector(`.${this.className}`);
 
     connectedCallback() {
         this.innerHTML = `
@@ -21,6 +22,12 @@ class SurvivorSpace extends HTMLElement {
                 <div class=${this.className}>
             </div>
         `;
+
+        const addObject = (objectId) => {
+            this.objectsContainer().append(document.getElementById(objectId));
+        }
+
+        window.addEventListener("survivor-space:add", (e) => addObject(e.detail.id));
     }
 }
 

@@ -11,6 +11,7 @@ class MajorGC extends HTMLElement {
             const event = this.isRunning ? "major-gc:start" : "major-gc:stop"
             window.dispatchEvent(new CustomEvent(event));
             render();
+            removeAlert();
         }
 
         const disable = () => {
@@ -22,30 +23,23 @@ class MajorGC extends HTMLElement {
         }
 
         const alert = () => {
-            this.getElement().classList.add("gc-alert")
-            resetAnimation();
+            this.getElement().classList.add("major-gc-alert");
         }
 
-        const resetAnimation = () => {
-            const el = this.getElement();
-            el.style.animation = 'none';
-            el.offsetHeight; /* trigger reflow */
-            el.style.animation = null;
+        const removeAlert = () => {
+            this.getElement().classList.remove("major-gc-alert");
         }
 
-        const render = () => {
+
+            const render = () => {
             this.innerHTML = `
             <style>
                 .major-gc {
                     width: 72px;
                     height: 70px;
                 }
-                .gc-alert {
-                    animation: 1s alert;
-                }
-                @keyframes alert {
-                    0% { color: red }
-                    100% { color: black }
+                .major-gc-alert {
+                    color: red;
                 }
                 
             </style>

@@ -2,8 +2,8 @@ class EdenSpace extends HTMLElement {
 
     className = 'eden-space';
     objectsContainer = () => this.querySelector(`.${this.className}`);
-    maxObjects = 6;
 
+    maxObjects = 6;
     amountOfObjects = () => this.objectsContainer().childElementCount;
 
     createObject = (id) => {
@@ -15,6 +15,7 @@ class EdenSpace extends HTMLElement {
         }
         const gcObject = document.createElement("gc-object")
         gcObject.setAttribute("data-id", id);
+        gcObject.setAttribute("id", `gc-object-${id}`);
         this.objectsContainer().appendChild(gcObject);
     }
 
