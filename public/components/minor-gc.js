@@ -5,10 +5,10 @@ class MinorGC extends HTMLElement {
     isRunning = false;
 
     connectedCallback() {
-        const onClick = () => {
+        const onClick = (e) => {
             this.isRunning = !this.isRunning;
             const event = this.isRunning ? "minor-gc:start" : "minor-gc:stop"
-            window.dispatchEvent(new CustomEvent(event));
+            window.dispatchEvent(new CustomEvent(event, { detail: { x: e.pageX, y: e.pageY } }));
             render();
             removeAlert();
         }

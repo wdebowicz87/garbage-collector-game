@@ -42,6 +42,9 @@ class Game extends HTMLElement {
                 align-items: center;
                 gap: 20px;
             }
+            button:enabled {
+                cursor: pointer;
+            }
         </style>
 <!--            <p>Garbage Collector</p>-->
         <div class="code">

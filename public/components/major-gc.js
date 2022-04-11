@@ -6,10 +6,10 @@ class MajorGC extends HTMLElement {
     isRunning = false;
 
     connectedCallback() {
-        const onClick = () => {
+        const onClick = (e) => {
             this.isRunning = !this.isRunning;
             const event = this.isRunning ? "major-gc:start" : "major-gc:stop"
-            window.dispatchEvent(new CustomEvent(event));
+            window.dispatchEvent(new CustomEvent(event, { detail: { x: e.pageX, y: e.pageY } }));
             render();
             removeAlert();
         }
