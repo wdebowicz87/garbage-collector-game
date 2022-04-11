@@ -10,6 +10,9 @@ class EdenSpace extends HTMLElement {
         if (this.amountOfObjects() >= this.maxObjects) {
             //window.alert("Exception in thread main java.lang.OutOfMemoryError: Java heap space");
         }
+        if (this.amountOfObjects() >= this.maxObjects - 2) {
+            window.dispatchEvent(new CustomEvent('minor-gc:alert'));
+        }
         const gcObject = document.createElement("gc-object")
         gcObject.setAttribute("data-id", id);
         this.objectsContainer().appendChild(gcObject);

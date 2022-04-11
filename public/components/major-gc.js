@@ -21,12 +21,31 @@ class MajorGC extends HTMLElement {
             this.getElement().disabled = false;
         }
 
+        const alert = () => {
+            this.getElement().classList.add("gc-alert")
+            resetAnimation();
+        }
+
+        const resetAnimation = () => {
+            const el = this.getElement();
+            el.style.animation = 'none';
+            el.offsetHeight; /* trigger reflow */
+            el.style.animation = null;
+        }
+
         const render = () => {
             this.innerHTML = `
             <style>
                 .major-gc {
                     width: 72px;
                     height: 70px;
+                }
+                .gc-alert {
+                    animation: 1s alert;
+                }
+                @keyframes alert {
+                    0% { color: red }
+                    100% { color: black }
                 }
                 
             </style>
@@ -44,6 +63,7 @@ class MajorGC extends HTMLElement {
         this.addEventListener('click', onClick);
         window.addEventListener('minor-gc:start', disable);
         window.addEventListener('minor-gc:stop', enable);
+        window.addEventListener('major-gc:alert', alert);
     }
 }
 

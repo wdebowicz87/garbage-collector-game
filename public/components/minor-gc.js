@@ -20,12 +20,31 @@ class MinorGC extends HTMLElement {
             this.getElement().disabled = false;
         }
 
+        const alert = () => {
+            this.getElement().classList.add("gc-alert")
+            resetAnimation();
+        }
+
+        const resetAnimation = () => {
+            const el = this.getElement();
+            el.style.animation = 'none';
+            el.offsetHeight; /* trigger reflow */
+            el.style.animation = null;
+        }
+
         const render = () => {
             this.innerHTML = `
             <style>
                 .minor-gc {
                     width: 72px;
                     height: 70px;
+                }
+                .gc-alert {
+                    animation: 1s alert;
+                }
+                @keyframes alert {
+                    0% { color: red }
+                    100% { color: black }
                 }
                 
             </style>
@@ -43,6 +62,7 @@ class MinorGC extends HTMLElement {
         this.addEventListener('click', onClick);
         window.addEventListener('major-gc:start', disable);
         window.addEventListener('major-gc:stop', enable);
+        window.addEventListener('minor-gc:alert', alert);
     }
 }
 
