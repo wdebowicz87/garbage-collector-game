@@ -7,14 +7,32 @@
     <style>
         .gameContainer {
             width: 1100px;
+            height: 650px;
             margin: auto;
+            background-color: white;
+            padding: 8px;
+            border: 1px solid lightblue;
+        }
+        body {
+            background-color: azure;
+        }
+        .title {
+            margin: auto;
+            text-align: center;
+            width: 50%;
+        }
+        h1 {
+            margin:auto;
         }
     </style>
 </head>
 <body>
-<div class="gameContainer">
-    <my-game></my-game>
-</div>
-<script type="module" src="components/game.js"></script>
+    <div class="title">
+        <h1>Java Garbage Collector Simulator</h1>
+    </div>
+    <div class="gameContainer">
+        <my-game></my-game>
+    </div>
+    <script type="module" src="components/game.js"></script>
 </body>
 </html>

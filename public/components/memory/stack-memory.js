@@ -14,7 +14,7 @@ class StackMemory extends HTMLElement {
         this.innerHTML = `
             <style>
                 .stack-memory {
-                    height: 600px;
+                    height: 535px;
                     padding: 4px;
                     width: 90px;
                     border: 1px solid green;

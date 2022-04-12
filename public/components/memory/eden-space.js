@@ -24,8 +24,8 @@ class EdenSpace extends HTMLElement {
             <style>
                 .eden-space {
                     height: 60px;
-                    padding: 2px;
-                    width: 400px;
+                    padding: 2px 4px;
+                    width: 356px;
                     border: 3px solid green;
                     display: flex;
                     flex-direction: row;

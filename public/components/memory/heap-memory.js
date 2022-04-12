@@ -20,7 +20,7 @@ class HeapMemory extends HTMLElement {
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 20px;
+                    gap: 30px;
                     background-color: lightgoldenrodyellow;
                 }
                 .old-generation-flex {
@@ -30,7 +30,7 @@ class HeapMemory extends HTMLElement {
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 20px;
+                    gap: 10px;
                     background-color: lightgoldenrodyellow;
                 }
             </style>

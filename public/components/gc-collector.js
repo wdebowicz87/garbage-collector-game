@@ -6,7 +6,7 @@ class GcCollector extends HTMLElement {
             <style>
                 .objects-collector {
                     /*border: 1px solid blue;*/
-                    margin-top: 70px;
+                    margin-top: 5px;
                 }
                 img {
                     max-width: 100%;
@@ -28,6 +28,7 @@ class GcCollector extends HTMLElement {
                 .bin-top {
                       transform-origin: bottom left;
                       transform-style: preserve-3D;
+                      margin-bottom: -3px;
                 }
                 .bin-top-rotate {
                       animation: top-rotate 1s infinite alternate;
