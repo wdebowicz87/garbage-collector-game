@@ -6,6 +6,7 @@ class StackMemory extends HTMLElement {
     createObject = (id) => {
         const objectReference = document.createElement("object-reference")
         objectReference.setAttribute("data-id", id);
+        objectReference.setAttribute("id", `object-reference-${id}`);
         this.objectsContainer().appendChild(objectReference);
     }
 
@@ -21,7 +22,7 @@ class StackMemory extends HTMLElement {
                     grid-auto-flow: row;
                     align-items: flex-start;
                     grid-template-rows: repeat(30, 20px);
-                    background-color: lightyellow;
+                    background-color: lightgoldenrodyellow;
                 }
             </style>
             <b>Stack Memory</b>
