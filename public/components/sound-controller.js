@@ -1,13 +1,13 @@
 class SoundController extends HTMLElement {
 
     className = 'sound-controller';
-    errorSound = new Audio("../audio/Blip_Select.wav");
-    coinSound = new Audio("../audio/Pickup_Coin.wav");
-    gcSound = new Audio("../audio/Powerup.wav");
-    memoryErrorSound = new Audio("../audio/Explosion.wav");
+    errorSound = new Audio("audio/Blip_Select.wav");
+    coinSound = new Audio("audio/Pickup_Coin.wav");
+    gcSound = new Audio("audio/Powerup.wav");
+    memoryErrorSound = new Audio("audio/Explosion.wav");
     clickRandomizer = true;
-    click1 = new Audio("../audio/Click1.wav");
-    click2 = new Audio("../audio/Click2.wav");
+    click1 = new Audio("audio/Click1.wav");
+    click2 = new Audio("audio/Click2.wav");
 
     play(sound) {
         sound.volume = 0.3;

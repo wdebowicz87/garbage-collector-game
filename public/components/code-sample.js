@@ -16,7 +16,7 @@ class CodeSample extends HTMLElement {
                     gap: 0px;
                     text-align: left;
                     font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
-                    background: url("../images/dot.png");
+                    background: url("images/dot.png");
                     background-repeat: no-repeat;
                     background-size: 300px 20px;
                     
