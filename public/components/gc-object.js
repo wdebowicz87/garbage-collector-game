@@ -16,7 +16,11 @@ class GCObject extends HTMLElement {
     getElement = () => this.querySelector(".gc-object")
     getReferenceElement = () => document.getElementById(`object-reference-${this.numericId()}`)
     destroy = () => {
-        this.getReferenceElement().alert();
+        const reference = this.getReferenceElement();
+        if (reference) {
+            reference.alert();
+            return;
+        }
         this.getElement().classList.add("anim-destroy");
         this.state = garbage;
         setTimeout(
@@ -93,13 +97,13 @@ class GCObject extends HTMLElement {
         const makeClickable = () => {
             this.getElement().classList.add('gc-object-clickable');
             this.addEventListener('click', this.destroy);
-            this.getReferenceElement().mark();
+            this.getReferenceElement()?.mark();
         }
 
         const makeUnclickable = () => {
             this.getElement().classList.remove('gc-object-clickable');
             this.removeEventListener('click', this.destroy);
-            this.getReferenceElement().unmark();
+            this.getReferenceElement()?.unmark();
         }
 
         window.addEventListener("minor-gc:start", e => {

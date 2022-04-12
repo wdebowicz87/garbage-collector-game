@@ -2,6 +2,21 @@ class ObjectReference extends HTMLElement {
 
     numericId =() => this.dataset.id;
     getElement = () => this.querySelector(".object-reference");
+    lifespan = this.calculateLifespan();
+    executionCycles = 0;
+
+    calculateLifespan() {
+        const randomizer = Math.random();
+        if (randomizer < 0.5) {
+            return Math.random() * 2;
+        } else if (randomizer < 0.65) {
+            return Math.random() * 10;
+        } else if (randomizer < 0.8) {
+                return Math.random() * 100;
+        } else if (randomizer < 0.9) {
+            return 1000;
+        }
+    }
 
     mark() {
         this.getElement().classList.add("object-reference-mark");
@@ -14,6 +29,13 @@ class ObjectReference extends HTMLElement {
     alert() {
         this.getElement().classList.add("object-reference-alert");
         setTimeout(() => this.getElement().classList.remove("object-reference-alert"), 400);
+    }
+
+    checkLifespan() {
+        if (this.executionCycles > this.lifespan) {
+            this.remove();
+        }
+        this.executionCycles++;
     }
 
     connectedCallback() {
@@ -49,6 +71,10 @@ class ObjectReference extends HTMLElement {
                 *obj-${this.numericId()}(ref)
             </div>
         `;
+
+        window.addEventListener("object:new", e => {
+            this.checkLifespan();
+        })
     }
 }
 
