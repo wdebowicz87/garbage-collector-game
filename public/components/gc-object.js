@@ -16,6 +16,7 @@ class GCObject extends HTMLElement {
     getElement = () => this.querySelector(".gc-object")
     getReferenceElement = () => document.getElementById(`object-reference-${this.numericId()}`)
     destroy = () => {
+        this.getReferenceElement().alert();
         this.getElement().classList.add("anim-destroy");
         this.state = garbage;
         setTimeout(
