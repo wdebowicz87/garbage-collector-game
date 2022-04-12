@@ -21,7 +21,7 @@ class StackMemory extends HTMLElement {
                     grid-auto-flow: row;
                     align-items: flex-start;
                     grid-template-rows: repeat(30, 20px);
-                    background-color: lightgreen;
+                    background-color: lightyellow;
                 }
             </style>
             <b>Stack Memory</b>

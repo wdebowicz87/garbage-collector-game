@@ -30,12 +30,15 @@ class GCObject extends HTMLElement {
                     height: 50px;
                     width: 50px;
                     border: 3px solid black;
-                    background-color: yellow;
+                    background-color: lightyellow;
                     position: relative;
-                    cursor: pointer;
                     text-align: center;
                 }
-                .gc-object:hover {
+                .gc-object-clickable {
+                    cursor: pointer;
+                    background-color: yellow;
+                }
+                .gc-object-clickable:hover {
                     background-color: orange;
                 }
                 .anim-create {
@@ -78,8 +81,6 @@ class GCObject extends HTMLElement {
             </div>
         `;
 
-        this.addEventListener('click', this.destroy);
-
         const promoteTo = (newState, newClass) => {
             const newParent = stateToSpace[newState];
             this.getElement().classList.add(newClass);
@@ -87,7 +88,32 @@ class GCObject extends HTMLElement {
             setTimeout(() => window.dispatchEvent(new CustomEvent(`${newParent}:add`, { detail: { id: this.id } })), 1000);
         }
 
+        const makeClickable = () => {
+            this.getElement().classList.add('gc-object-clickable');
+            this.addEventListener('click', this.destroy);
+        }
+
+        const makeUnclickable = () => {
+            this.getElement().classList.remove('gc-object-clickable');
+            this.removeEventListener('click', this.destroy);
+        }
+
+        window.addEventListener("minor-gc:start", e => {
+            if (eden === this.state || survivor === this.state) {
+                makeClickable();
+            }
+        })
+        window.addEventListener("major-gc:start", e => {
+            if (tenured === this.state) {
+                makeClickable();
+            }
+        })
+        window.addEventListener("major-gc:stop", e => {
+            makeUnclickable();
+        })
+
         window.addEventListener("minor-gc:stop", e => {
+            makeUnclickable();
             const state = this.state;
             switch (state) {
                 case garbage:
