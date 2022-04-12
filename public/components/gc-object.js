@@ -68,11 +68,11 @@ class GCObject extends HTMLElement {
                     100% { top: 110px; background-color: red}
                 }
                 .anim-promote-right {
-                    animation: move-right 1s;
+                    animation: move-right 0.6s;
                     animation-fill-mode: forwards;
                 }
                 .anim-promote-down {
-                    animation: move-down 1s;
+                    animation: move-down 0.6s;
                     animation-fill-mode: forwards;
                 }
                 @keyframes  move-right {
@@ -93,7 +93,7 @@ class GCObject extends HTMLElement {
             const newParent = stateToSpace[newState];
             this.getElement().classList.add(newClass);
             this.state = newState;
-            setTimeout(() => window.dispatchEvent(new CustomEvent(`${newParent}:add`, { detail: { id: this.id } })), 1000);
+            setTimeout(() => window.dispatchEvent(new CustomEvent(`${newParent}:add`, { detail: { id: this.id } })), 600);
         }
 
         const makeClickable = () => {

@@ -72,7 +72,7 @@ class CodeExecutor extends HTMLElement {
             this.pauseCode();
             setTimeout(() => window.alert(`
             BOOM!
-            Due to: java.lang.OutOfMemoryError: Java heap space
+            Your memory exploded: java.lang.OutOfMemoryError
             
             Try to trigger GC before your heap runs out of space.
             No objects to collect? your app might have a memory leak.
