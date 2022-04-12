@@ -18,9 +18,11 @@ class GCObject extends HTMLElement {
     destroy = () => {
         const reference = this.getReferenceElement();
         if (reference) {
+            window.dispatchEvent(new CustomEvent("collect:error"));
             reference.alert();
             return;
         }
+        window.dispatchEvent(new CustomEvent("collect:success"));
         this.getElement().classList.add("anim-destroy");
         this.state = garbage;
         setTimeout(

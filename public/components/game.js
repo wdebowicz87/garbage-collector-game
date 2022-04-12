@@ -2,6 +2,7 @@ import {toEncodedJson} from "../utils.js";
 import "../programmer.js";
 import "./gc-object.js";
 import "./object-reference.js";
+import "./sound-controller.js";
 import "./gc-collector.js";
 import "./code-sample.js";
 import "./code-executor.js";
@@ -47,6 +48,7 @@ class Game extends HTMLElement {
             }
         </style>
 <!--            <p>Garbage Collector</p>-->
+        <sound-controller></sound-controller>
         <div class="code">
             <code-sample></code-sample>
             <code-executor></code-executor>

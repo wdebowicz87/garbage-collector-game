@@ -8,6 +8,9 @@ class TenuredSpace extends HTMLElement {
 
     addObject(objectId) {
         this.objectsContainer().append(document.getElementById(objectId));
+        if (this.amountOfObjects() >= this.maxObjects) {
+            window.dispatchEvent(new CustomEvent('memory:error'))
+        }
         if (this.amountOfObjects() >= this.maxObjects - 3) {
             window.dispatchEvent(new CustomEvent('major-gc:alert'));
         }
