@@ -1,5 +1,5 @@
 {
-  "name": "mysvelte",
+  "name": "garbage-collector-game",
   "version": "1.0.0",
   "description": "Like svelte but without svelte",
   "main": "index.js",
