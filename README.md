@@ -1,10 +1,19 @@
 # garbage-collector-game
-Java Garbage Collector Simulator. Entry of Ludum Dare.
+The intention of the “game” is to simulate process of Garbage Collection (based on Java). 
+Your goal is survive as long as possible without crashing program memory. 
+
+This project was created as an entry to the Ludum Dare game jam: 
+https://ldjam.com/events/ludum-dare/50/garbage-collector-simulator
+
 
 # How to run
 nodemon index.js
 
 # About garbage collection
+
+> Automatic garbage collection is the process of looking at heap memory, identifying which objects are in use and which are not, and deleting the unused objects. An in use object, or a referenced object, means that some part of your program still maintains a pointer to that object. An unused object, or unreferenced object, is no longer referenced by any part of your program. So the memory used by an unreferenced object can be reclaimed
+
+Source: https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html
 
 ![](doc/gc-promotion.png)
 
