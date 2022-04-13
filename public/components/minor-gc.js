@@ -51,11 +51,13 @@ class MinorGC extends HTMLElement {
         }
 
         render();
+        disable();
 
         this.addEventListener('click', onClick);
         window.addEventListener('major-gc:start', disable);
         window.addEventListener('major-gc:stop', enable);
         window.addEventListener('minor-gc:alert', alert);
+        window.addEventListener('game:start', enable);
     }
 }
 

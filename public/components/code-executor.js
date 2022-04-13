@@ -26,8 +26,9 @@ class CodeExecutor extends HTMLElement {
     }
 
     connectedCallback() {
-        const onClick = () => {
+        const startGame = () => {
             this.runCode();
+            window.dispatchEvent(new CustomEvent('game:start'));
         }
 
         const disable = () => {
@@ -60,7 +61,7 @@ class CodeExecutor extends HTMLElement {
         </div>
         `;
 
-        this.getElement().addEventListener('click', onClick);
+        this.getElement().addEventListener('click', startGame);
 
         window.addEventListener("minor-gc:start", e => {
             this.pauseCode();

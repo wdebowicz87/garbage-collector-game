@@ -53,11 +53,13 @@ class MajorGC extends HTMLElement {
         }
 
         render();
+        disable();
 
         this.addEventListener('click', onClick);
         window.addEventListener('minor-gc:start', disable);
         window.addEventListener('minor-gc:stop', enable);
         window.addEventListener('major-gc:alert', alert);
+        window.addEventListener('game:start', enable);
     }
 }
 
