@@ -27,9 +27,16 @@ class ErrorPopup extends HTMLElement {
                 width: 600px;
                 animation: error-popup-appear 0.4s;
             }
+            .error-popup-content img {
+                float: left;
+                padding: 0px;
+                width: 115px;
+            }
             .error-popup-body {
-                padding: 5px 10px 10px  ;
+                padding: 5px 15px 10px  ;
                 font-size: larger;
+                width: 450px;
+                display: inline-block;
             }
             
             .error-popup-header {
@@ -64,13 +71,13 @@ class ErrorPopup extends HTMLElement {
               <span class="error-popup-close">&times;</span>
               <h1>BOOM!</h1>
             </div>
+            <img src="images/bin_45.svg"></img>
             <div class="error-popup-body">
                 <p>Your memory exploded with <b>java.lang.OutOfMemoryError</b></p>
                 <p>Start Garbage Collection (GC) before your heap runs out of space. 
                 Collect all the objects that does not have reference on the stack memory.</p>
                 <p>If your heap is full but there are no objects to collect your app might have a memory leak.</p>
             </div>
-            
           </div>
         
         </div>
