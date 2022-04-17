@@ -9,7 +9,7 @@ class ErrorPopup extends HTMLElement {
                 display: none;
                 position: fixed;
                 z-index: 1;
-                padding-top: 200px;
+                padding-top: 140px;
                 left: 0;
                 top: 0;
                 width: 100%;

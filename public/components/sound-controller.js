@@ -8,6 +8,7 @@ class SoundController extends HTMLElement {
     clickRandomizer = true;
     click1 = new Audio("audio/Click1.wav");
     click2 = new Audio("audio/Click2.wav");
+    win = new Audio("audio/Powerup-win.wav");
 
     play(sound) {
         sound.volume = 0.3;
@@ -21,6 +22,7 @@ class SoundController extends HTMLElement {
         window.addEventListener("minor-gc:start", (e) => this.play(this.gcSound));
         window.addEventListener("major-gc:start", (e) => this.play(this.gcSound));
         window.addEventListener("memory:error", (e) => this.play(this.memoryErrorSound));
+        window.addEventListener("game:won", (e) => this.play(this.win));
         window.addEventListener("object:new", (e) => {
             this.play(this.clickRandomizer ? this.click1 : this.click2);
             this.clickRandomizer = !this.clickRandomizer;

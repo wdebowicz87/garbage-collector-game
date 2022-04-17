@@ -72,6 +72,9 @@ class CodeExecutor extends HTMLElement {
         window.addEventListener("memory:error", e => {
             this.pauseCode();
         })
+        window.addEventListener("game:won", e => {
+            this.pauseCode();
+        })
 
         window.addEventListener("minor-gc:stop", e => {
             this.runCode();

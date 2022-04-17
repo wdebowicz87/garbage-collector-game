@@ -4,11 +4,13 @@ import "./gc-object.js";
 import "./object-reference.js";
 import "./sound-controller.js";
 import "./gc-collector.js";
-import "./code-sample.js";
-import "./code-executor.js";
-import "./minor-gc.js";
-import "./major-gc.js";
-import "./error-popup.js";
+import "./code/code-sample.js";
+import "./code/code-executor.js";
+import "./code/progress-bar.js";
+import "./gc-controller/minor-gc.js";
+import "./gc-controller/major-gc.js";
+import "./popups/error-popup.js";
+import "./popups/win-popup.js";
 import "./memory/heap-memory.js";
 import "./memory/eden-space.js";
 import "./memory/tenured-space.js";
@@ -30,7 +32,7 @@ class Game extends HTMLElement {
         <style>
             .memory {
                 margin-top: 10px;
-                width: 1100px;
+                width: 1050px;
                 /*border: 3px solid green;*/
                 display: flex;
                 flex-direction: row;
@@ -53,6 +55,7 @@ class Game extends HTMLElement {
         <div class="code">
             <code-sample></code-sample>
             <code-executor></code-executor>
+            <progress-bar></progress-bar>
         </div>
         <div class="memory">
             <stack-memory></stack-memory> 
@@ -62,6 +65,7 @@ class Game extends HTMLElement {
             </div>
         </div>
         <error-popup></error-popup>
+        <win-popup></win-popup>
         `;
     }
 }
