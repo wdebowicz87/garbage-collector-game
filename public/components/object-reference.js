@@ -2,12 +2,11 @@ class ObjectReference extends HTMLElement {
 
     numericId =() => this.dataset.id;
     getElement = () => this.querySelector(".object-reference");
-    lifespan = this.calculateLifespan();
     executionCycles = 0;
 
     calculateLifespan() {
         const randomizer = Math.random();
-        if (randomizer < 0.5) {
+        if (this.numericId() < 3 || randomizer < 0.5) {
             return Math.random() * 2;
         } else if (randomizer < 0.65) {
             return Math.random() * 10;
@@ -72,6 +71,7 @@ class ObjectReference extends HTMLElement {
             </div>
         `;
 
+        this.lifespan = this.calculateLifespan();
         window.addEventListener("object:new", e => {
             this.checkLifespan();
         })
