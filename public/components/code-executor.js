@@ -71,13 +71,6 @@ class CodeExecutor extends HTMLElement {
         })
         window.addEventListener("memory:error", e => {
             this.pauseCode();
-            setTimeout(() => window.alert(`
-            BOOM!
-            Your memory exploded: java.lang.OutOfMemoryError
-            
-            Try to trigger GC before your heap runs out of space.
-            No objects to collect? your app might have a memory leak.
-            `), 200);
         })
 
         window.addEventListener("minor-gc:stop", e => {

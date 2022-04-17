@@ -8,6 +8,7 @@ import "./code-sample.js";
 import "./code-executor.js";
 import "./minor-gc.js";
 import "./major-gc.js";
+import "./error-popup.js";
 import "./memory/heap-memory.js";
 import "./memory/eden-space.js";
 import "./memory/tenured-space.js";
@@ -60,6 +61,7 @@ class Game extends HTMLElement {
                 <gc-collector></gc-collector>
             </div>
         </div>
+        <error-popup></error-popup>
         `;
     }
 }

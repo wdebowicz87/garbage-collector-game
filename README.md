@@ -43,3 +43,4 @@ Tutorial: https://www.oracle.com/technetwork/tutorials/tutorials-1873457.html
 - https://itnext.io/adding-state-to-custom-html-elements-639961c7c529
 - https://www.html5rocks.com/en/tutorials/webcomponents/customelements/
 - https://stackoverflow.com/questions/35655359/difference-between-template-tags-content-tags-and-custom-element-tags-in-ht
+- https://www.w3schools.com/howto/howto_css_modals.asp
