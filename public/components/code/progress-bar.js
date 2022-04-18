@@ -41,7 +41,7 @@ class ProgressBar extends HTMLElement {
         this.render();
 
         window.addEventListener("object:new", e => {
-            this.progressPercentage += 4;
+            this.progressPercentage += 2;
             if (this.progressPercentage <= 100) {
                 this.render();
             }

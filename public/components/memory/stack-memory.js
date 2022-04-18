@@ -16,7 +16,7 @@ class StackMemory extends HTMLElement {
                 .stack-memory {
                     height: 535px;
                     padding: 4px;
-                    width: 90px;
+                    width: 95px;
                     border: 1px solid green;
                     display: grid;
                     grid-auto-flow: row;
