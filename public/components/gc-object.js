@@ -17,7 +17,7 @@ class GCObject extends HTMLElement {
     getReferenceElement = () => document.getElementById(`object-reference-${this.numericId()}`)
     destroy = () => {
         const reference = this.getReferenceElement();
-        if (reference) {
+        if (reference && reference.isActive) {
             window.dispatchEvent(new CustomEvent("collect:error"));
             reference.alert();
             return;

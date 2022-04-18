@@ -3,6 +3,7 @@ class ObjectReference extends HTMLElement {
     numericId =() => this.dataset.id;
     getElement = () => this.querySelector(".object-reference");
     executionCycles = 0;
+    isActive = true;
 
     calculateLifespan() {
         const randomizer = Math.random();
@@ -32,7 +33,9 @@ class ObjectReference extends HTMLElement {
 
     checkLifespan() {
         if (this.executionCycles > this.lifespan) {
-            this.remove();
+            this.getElement().classList.add("object-reference-move");
+            this.isActive = false;
+            setTimeout(() => this.remove(), 1400);
         }
         this.executionCycles++;
     }
@@ -48,10 +51,21 @@ class ObjectReference extends HTMLElement {
                     text-align: left;
                     border: 1px solid black;
                     background-color: lightyellow;
+                    position:relative;
                 }
                 .object-reference-mark
                 {
                     background-color: yellow;
+                }
+                .object-reference-move
+                {
+                    animation: 1.5s reference-move;
+                }
+                @keyframes reference-move
+                {
+                    0%      {left: 0px; opacity: 1}
+                    30%    {left: -110px; top: 0px; opacity: 0.8}
+                    100%    {left: -110px; top: 100px; opacity: 0.4}
                 }
                 .object-reference-alert
                 {
